@@ -1,0 +1,148 @@
+{% extends "base_generic.html" %} {% block extra_style %}
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #66ccff;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .container {
+    max-width: 1500px;
+    margin: auto;
+    padding: 20px;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .tile {
+    perspective: 1000px;
+    flex: 1 0 calc(25% - 20px);
+    margin: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .tile:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+  }
+
+  .tile-link {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+  }
+
+  .tile:hover .tile-link {
+    transform: rotateY(180deg);
+  }
+
+  .tile-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #fff;
+  }
+
+  .tile-content.front {
+    background: none;
+    justify-content: center;
+  }
+
+  .tile-content.back {
+    transform: rotateY(180deg);
+  }
+
+  .tile .tile-title {
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 20px;
+  }
+
+  .tile .tile-description {
+    color: #666;
+  }
+
+  .tile .tile-back-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+  }
+
+  .tile .tile-back-link:hover {
+    background-color: #0056b3;
+  }
+
+  @media (max-width: 1200px) {
+    .tile {
+      flex: 1 0 calc(50% - 20px);
+      margin: 10px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .tile {
+      flex: 1 0 calc(100% - 20px);
+      margin: 10px;
+    }
+  }
+</style>
+{% endblock %} {% block content %}
+<main>
+  <div class="container">
+    <h1>Animals & Food Waste</h1>
+    <p class="lead">
+      Animals are essential in our food system, contributing to the production
+      of food and presenting opportunities to minimize waste. Join us as we
+      delve into the vital role of animals in our food chain and discover ways
+      to reduce waste for a more sustainable future.
+    </p>
+
+    <div class="row">
+      {% for animal in animals_data %}
+      <div class="tile">
+        <div class="tile-link">
+          <div class="tile-content front">
+            <img
+              class="tile-image"
+              src="{{ animal.image }}"
+              alt="{{ animal.name }}"
+            />
+          </div>
+          <div class="tile-content back">
+            <h5 class="tile-title">{{ animal.name }}</h5>
+            <p class="tile-description">{{ animal.description }}</p>
+            <a href="{{ animal.url }}" class="tile-back-link">Read More</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</main>
+{% endblock %}

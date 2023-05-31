@@ -1,0 +1,199 @@
+{% extends "base_generic.html" %} {% block extra_style %}
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #66ccff;
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  .activity-section {
+    width: 92%;
+    display: flex;
+    flex-direction: column;
+    margin: 0px 100px;
+  }
+
+  .tile-deck {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    margin: -10px;
+  }
+
+  .tile {
+    flex: 1 0 calc(25% - 20px);
+    border-radius: 5px;
+    margin: 10px;
+    padding: 0;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    box-sizing: border-box;
+    background-color: #fff;
+    overflow: hidden;
+  }
+
+  .tile:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    transform: scale(1.02);
+  }
+
+  .tile .inner {
+    position: relative;
+    height: 100%;
+    padding: 0;
+    perspective: 1000px;
+  }
+
+  .tile .front,
+  .tile .back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .tile .front {
+    z-index: 2;
+    background-color: #fff;
+    transform: scale(1);
+    transition: transform 2.5s;
+  }
+
+  .tile:hover .front {
+    transform: scale(1.05);
+  }
+
+  .tile .back {
+    transform: rotateY(180deg);
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+
+  .tile .back-content {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .tile .back h5 {
+    color: #333;
+    margin-top: 10px;
+  }
+
+  .tile .back p {
+    color: #777;
+    margin-bottom: 10px;
+  }
+
+  .tile .back a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+  }
+
+  .tile .back a:hover {
+    background-color: #0056b3;
+  }
+
+  @media (max-width: 1200px) {
+    .tile {
+      flex: 1 0 calc(33.33% - 20px);
+    }
+    .tile-deck {
+      margin-left: 10px;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .tile {
+      flex: 1 0 calc(50% - 20px);
+    }
+    .tile-deck {
+      margin-left: 10px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .tile {
+      flex: 1 0 calc(100% - 20px);
+    }
+    .tile-deck {
+      margin-left: 10px;
+    }
+  }
+</style>
+{% endblock %} {% block content %}
+<section id="quizzes" class="activity-section">
+  <h1>Learning Activities</h1>
+  <h2>Quizzes</h2>
+  <div class="tile-deck">
+    {% for quiz in quizzes %}
+    <div class="tile">
+      <div class="inner">
+        <div class="front">
+          <img
+            class="card-img-top"
+            src="{{ quiz.image }}"
+            alt="{{ quiz.title }}"
+          />
+        </div>
+        <div class="back">
+          <div class="back-content">
+            <h5>{{ quiz.title }}</h5>
+            <p>{{ quiz.text }}</p>
+            <a href="#" class="btn btn-primary">Take Quiz</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="videos" class="activity-section">
+  <h2>Videos</h2>
+  <div class="tile-deck">
+    {% for video in videos %}
+    <div class="tile">
+      <div class="inner">
+        <div class="front">
+          <img
+            class="card-img-top"
+            src="{{ video.thumbnail }}"
+            alt="{{ video.title }}"
+          />
+        </div>
+        <div class="back">
+          <div class="back-content">
+            <h5>{{ video.title }}</h5>
+            <p>{{ video.text }}</p>
+            <a href="#" class="btn btn-primary">Watch Video</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

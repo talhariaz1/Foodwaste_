@@ -1,0 +1,103 @@
+{% extends 'base_generic.html' %} {% block extra_style %}
+<style>
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #66ccff;
+  }
+  .container {
+    width: 90%;
+    margin: auto;
+  }
+  .table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px 0;
+  }
+  .table th,
+  .table td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+  .table th {
+    background-color: #4caf50;
+    color: white;
+  }
+  .table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  .button {
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  .button.update {
+    background-color: white;
+    color: black;
+    border: 2px solid #008cba;
+  }
+  .button.update:hover {
+    background-color: #008cba;
+    color: white;
+  }
+  .button.delete {
+    background-color: white;
+    color: black;
+    border: 2px solid #f44336;
+  }
+  .button.delete:hover {
+    background-color: #f44336;
+    color: white;
+  }
+</style>
+{% endblock %} {% block content %}
+<div class="container">
+  <h2>Food Waste List</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Food Item</th>
+        <th>Quantity</th>
+        <th>Reason</th>
+        <th>Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for food_waste in food_wastes %}
+      <tr>
+        <td>{{ food_waste.food_item }}</td>
+        <td>{{ food_waste.quantity }}</td>
+        <td>{{ food_waste.reason }}</td>
+        <td>{{ food_waste.date }}</td>
+        <td>
+          <a
+            href="{% url 'food_waste_update' food_waste.id %}"
+            class="button update"
+            >Update</a
+          >
+          <a
+            href="{% url 'food_waste_delete' food_waste.id %}"
+            class="button delete"
+            >Delete</a
+          >
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="5" class="text-center">No data found</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

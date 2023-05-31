@@ -1,0 +1,78 @@
+{% extends "base_generic.html" %} {% block extra_style %}
+<style>
+  .container {
+    margin-top: 2rem;
+  }
+
+  .about-section {
+    display: flex;
+    justify-content: center;
+    padding: 80px 0;
+  }
+
+  .about-content {
+    max-width: 800px;
+    text-align: left;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  h2 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+
+  p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+
+  .about-image {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    margin-left: 40px;
+  }
+
+  /* Negative margin for footer */
+  footer {
+    margin-top: -200px !important;
+  }
+</style>
+{% endblock %} {% block content %}
+<main>
+  <section class="about-section">
+    <div class="container">
+      <div class="about-content">
+        <h2>Welcome to Food Waste Saver</h2>
+        <p>
+          We are on a mission to combat food waste and build a sustainable
+          future.
+        </p>
+        <p>
+          At Food Waste Saver, we are passionate about creating a world where no
+          food goes to waste. We believe that every individual can make a
+          difference by taking small steps towards reducing food waste in their
+          daily lives.
+        </p>
+        <p>
+          Our dedicated team of food enthusiasts, environmentalists, and
+          activists is committed to spreading awareness, providing practical
+          tips, and promoting sustainable practices that empower individuals,
+          households, and communities to make a positive impact.
+        </p>
+        <p>
+          Join us on this journey to save food, save the planet, and ensure a
+          better future for generations to come. Together, we can make a
+          significant difference and create a more sustainable and food-secure
+          world.
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

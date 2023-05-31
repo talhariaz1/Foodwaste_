@@ -1,0 +1,224 @@
+/* General styles */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #66ccff;
+}
+
+.container {
+  margin: 60px;
+  min-height: 76.4vh;
+  display: flex;
+  flex-direction: column;
+  max-width: 1000px;
+  box-sizing: border-box;
+}
+
+a {
+  color: #4caf50;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #388e3c;
+}
+
+header {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 0;
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header .navbar-brand {
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+header nav a {
+  color: #fff;
+  margin: 0 10px;
+  padding: 5px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+header nav a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Banner styles */
+.banner {
+  width: 100%;
+  overflow: hidden;
+}
+
+.banner img {
+  width: 100%;
+}
+
+/* Intro styles */
+.intro {
+  padding: 20px;
+  background-color: #4caf50;
+  color: #fff;
+  text-align: center;
+}
+
+.tiles {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.tile {
+  position: relative;
+  width: calc(25% - 20px);
+  height: 350px;
+  margin-bottom: 40px;
+  perspective: 1000px;
+  padding: 40px;
+}
+
+.tile .inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+}
+
+.tile:hover .inner {
+  transform: rotateY(180deg);
+}
+
+.tile .front,
+.tile .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  backface-visibility: hidden;
+  border: 2px solid black;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.tile .back {
+  background-color: rgba(255, 255, 255, 0.8);
+  transform: rotateY(180deg);
+}
+
+.tile .back a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.tile .back a:hover {
+  background-color: #388e3c;
+}
+
+.tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.tile h3 {
+  color: #4caf50;
+  margin: 15px 0;
+}
+
+.tile p {
+  color: #333;
+}
+
+@media screen and (max-width: 1024px) {
+  .tile {
+    width: calc(33.33% - 20px);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .tile {
+    width: calc(50% - 20px);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .tile {
+    width: 100%;
+  }
+}
+
+/* Footer styles */
+footer {
+  background-color: #222;
+  color: #fff;
+  padding: 20px 0;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.footer-block {
+  width: 30%;
+  margin: 0 20px;
+}
+
+.footer-block h3 {
+  color: #4caf50;
+}
+
+.footer-block.right-block {
+  text-align: right;
+}
+
+.footer-block a {
+  color: #fff;
+}
+
+.footer-block a:hover {
+  color: #ccc;
+}
+
+.about {
+  padding: 20px;
+}
+
+.about h2,
+.about h3 {
+  color: #4caf50;
+}
+
+.about ul {
+  list-style-type: none;
+  padding: 0;
+}
